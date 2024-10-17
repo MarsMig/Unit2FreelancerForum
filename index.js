@@ -22,7 +22,8 @@ const calculateAveragePrice = () => {
     (accumulator, freelancer) => accumulator + freelancer.price,
     0
   );
-  return sum / freelancers.length;
+  const average = sum / freelancers.length;
+  return parseFloat(average.toFixed(2));
 };
 
 const displayAveragePrice = () => {
@@ -37,7 +38,7 @@ const displayAveragePrice = () => {
 
 const addFreelancer = () => {
   const randomIndex = Math.floor(Math.random() * freelancers.length);
-  const add = freelancers[randomIndex];
+  const add = freelancers.splice(randomIndex, 1)[0];
   const myTimeout = setTimeout(addFreelancer, 8000);
   const div = document.createElement("div");
   const h3 = document.createElement("h3");
@@ -83,6 +84,7 @@ const display = (arr) => {
 const init = () => {
   const randomFreelancers = getRandomItems(freelancers, 2);
   display(randomFreelancers);
+  displayAveragePrice();
 };
 
 init();
