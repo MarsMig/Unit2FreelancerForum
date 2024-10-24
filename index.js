@@ -82,9 +82,10 @@ const display = (arr) => {
 };
 
 const init = () => {
-  const randomFreelancers = getRandomItems(freelancers, 2);
+  const randomFreelancers = getRandomItems(freelancers, 1);
   display(randomFreelancers);
   displayAveragePrice();
+  intervalId = setInterval(addFreelancer, 2000);
 };
 
 init();
